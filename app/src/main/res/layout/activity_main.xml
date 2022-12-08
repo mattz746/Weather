@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="0.056" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonParis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Paris"
@@ -29,25 +29,25 @@
     </Button>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonLondon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="London"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/buttonParis"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.02"></Button>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonRome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/buttonLondon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.105"></Button>
 
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/buttonRome"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.105"></Button>
 
