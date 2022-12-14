@@ -18,6 +18,14 @@ public class Weather implements Serializable {
         this.typeWeather = typeWeather;
     }
 
+    public double getTemp() {
+        return temp;
+    }
+
+    public double getFeelsLike() {
+        return feelsLike;
+    }
+
     public int getId() {
         return id;
     }

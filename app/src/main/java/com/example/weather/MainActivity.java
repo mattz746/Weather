@@ -34,10 +34,10 @@ public class MainActivity  extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                        response.body();
-
+                        Forecast forecastLondon = response.body();
+                        binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
+                        binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
                     }
-
 
 
                     @Override
@@ -46,12 +46,34 @@ public class MainActivity  extends AppCompatActivity {
                     }
                 });
             }
-        });
+            }
+                binding.buttonRome.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        OpenWeatherServices service =
+                                RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
+                        Call<Forecast> callLondon = service.getForecast("Rome");
+                        callLondon.enqueue(new Callback<Forecast>() {
+
+                            @Override
+                            public void onResponse(Call<Forecast> call, Response<Forecast> response) {
+                                Forecast forecastLondon = response.body();
+                                binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
+                                binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
+                            }
+
+
+                            @Override
+                            public void onFailure(Call<Forecast> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
 
 
 
 
-
+        }
     }
-
 }
