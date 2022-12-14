@@ -23,31 +23,33 @@ public class MainActivity  extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        OpenWeatherServices service =
-                RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
-        Call<Forecast> callLondon = service.getForecast("London");
-        callLondon.enqueue(new Callback<Forecast>() {
 
+        binding.buttonLondon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                response.body();
+            public void onClick(View view) {
+                OpenWeatherServices service =
+                        RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
+                Call<Forecast> callLondon = service.getForecast("London");
+                callLondon.enqueue(new Callback<Forecast>() {
 
+                    @Override
+                    public void onResponse(Call<Forecast> call, Response<Forecast> response) {
+                        response.body();
+
+                    }
+
+
+
+                    @Override
+                    public void onFailure(Call<Forecast> call, Throwable t) {
+
+                    }
+                });
             }
-
-
-
-            @Override
-            public void onFailure(Call<Forecast> call, Throwable t) {
-
-            }
-         binding.buttonLondon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    compteur.incrementer();
-                    binding.compteur.setText(compteur.toString());
-                }
-            });
         });
+
+
+
 
 
     }
