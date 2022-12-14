@@ -34,6 +34,60 @@ public class MainActivity  extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<Forecast> call, Response<Forecast> response) {
+                    Forecast forecastLondon = response.body();
+                    binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
+                    binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
+                    }
+
+
+
+                    @Override
+                    public void onFailure(Call<Forecast> call, Throwable t) {
+
+                    }
+                });
+
+            }
+        });
+
+        binding.buttonRome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenWeatherServices service =
+                        RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
+                Call<Forecast> callLondon = service.getForecast("Rome");
+                callLondon.enqueue(new Callback<Forecast>() {
+
+                    @Override
+                    public void onResponse(Call<Forecast> call, Response<Forecast> response) {
+                        Forecast forecastLondon = response.body();
+                        binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
+                        binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<Forecast> call, Throwable t) {
+
+
+                    }
+                });
+
+
+            }
+
+        });
+
+        binding.buttonParis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenWeatherServices service =
+                        RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
+                Call<Forecast> callLondon = service.getForecast("Paris");
+                callLondon.enqueue(new Callback<Forecast>() {
+
+                    @Override
+                    public void onResponse(Call<Forecast> call, Response<Forecast> response) {
                         Forecast forecastLondon = response.body();
                         binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
                         binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
@@ -46,34 +100,32 @@ public class MainActivity  extends AppCompatActivity {
                     }
                 });
             }
-            }
-                binding.buttonRome.setOnClickListener(new View.OnClickListener() {
+
+        });
+
+        binding.buttonBarcelone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenWeatherServices service =
+                        RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
+                Call<Forecast> callLondon = service.getForecast("Barcelone");
+                callLondon.enqueue(new Callback<Forecast>() {
+
                     @Override
-                    public void onClick(View view) {
-                        OpenWeatherServices service =
-                                RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.class);
-                        Call<Forecast> callLondon = service.getForecast("Rome");
-                        callLondon.enqueue(new Callback<Forecast>() {
-
-                            @Override
-                            public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                                Forecast forecastLondon = response.body();
-                                binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
-                                binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
-                            }
+                    public void onResponse(Call<Forecast> call, Response<Forecast> response) {
+                        Forecast forecastLondon = response.body();
+                        binding.textViewTemp.setText(String.valueOf(forecastLondon.getWeather().getTemp()));
+                        binding.textViewRessenti.setText(String.valueOf(forecastLondon.getWeather().getFeelsLike()));
+                    }
 
 
-                            @Override
-                            public void onFailure(Call<Forecast> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<Forecast> call, Throwable t) {
 
-                            }
-                        });
                     }
                 });
-
-
-
-
-        }
+            }
+        });
     }
+
 }
